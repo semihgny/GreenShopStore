@@ -1,0 +1,72 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Kayıt Sayfası";
+}
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3">Kayıt Ol</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="text-body" asp-area="Customer" asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                <li class="breadcrumb-item text-dark active" aria-current="page">Kayıt Ol</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.3s" src="/site/img/register.jpg" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="bg-light rounded p-5">
+                    <h1 class="mb-4">Yeni Hesap Oluştur</h1>
+                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Input.Email" class="form-control bg-light border-0" autocomplete="username" aria-required="true" placeholder="E-posta Adresiniz" />
+                                    <label asp-for="Input.Email">E-posta Adresiniz</label>
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Input.Password" class="form-control bg-light border-0" autocomplete="new-password" aria-required="true" placeholder="Şifre" />
+                                    <label asp-for="Input.Password">Şifre</label>
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control bg-light border-0" autocomplete="new-password" aria-required="true" placeholder="Şifreyi Onayla" />
+                                    <label asp-for="Input.ConfirmPassword">Şifreyi Onayla</label>
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button id="registerSubmit" type="submit" class="btn btn-primary w-100 py-3">Kayıt Ol</button>
+                            </div>
+                            <div class="col-12 text-center">
+                                <p class="mb-0">Zaten bir hesabınız var mı? <a asp-area="Identity" asp-page="/Account/Login">Giriş Yapın</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
